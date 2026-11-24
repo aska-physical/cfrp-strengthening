@@ -40,12 +40,14 @@ FRP system, one ply of fabric:
 - Environmental factor CE = 0.85, as used in the example. Design values:
   ffu = 108.8 ksi, efu = 0.0077.
 
-Derived, not printed as inputs: ffu and efu are the reported ffu* and
-efu* multiplied by CE, and ebi is itself derived from the dead-load
-moment on the cracked section. The example prints all three ready-made,
-and the checker takes them as inputs rather than deriving them.
-Matching ffu is one of the ten matched values, but it shows only that
-the multiplication was done right.
+Computed vs. supplied values: `src/flexure440.py` (`design_material`,
+lines 32–40) computes `ffu = CE * ffu_star_ksi` and `efu = CE * efu_star`
+from `CE` and the starred material inputs in `tracks/track-1/input.json`,
+whereas `ebi` (`0.0013`, derived in the example from the dead-load moment
+on the cracked section) is supplied directly as an input in
+`tracks/track-1/input.json` rather than recomputed by the checker.
+Matching `ffu` is one of the ten matched values, verifying the `CE`
+multiplication from the starred material input.
 
 ## Results printed in the example
 
